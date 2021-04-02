@@ -58,8 +58,9 @@ public class archivos {
                 boolean resultado;
                 
                 if (i == 1){
+                    System.out.println(datos[i]);
                    resultado = comparar_numeros(datos[i]);
-                   if(resultado == true){
+                   if(resultado == false){
                        JOptionPane.showMessageDialog(null, "El numero ya existe en este registro");
                    }else{
                        pw.write(datos[i]);

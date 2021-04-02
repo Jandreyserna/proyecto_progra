@@ -25,7 +25,7 @@ public class manejo_datos {
     public static void abrirTxt(){
         try {
             archivos a = new archivos();
-            String s = a.LeerTxt("C:\\Users\\jandr\\Documents\\NetBeansProjects\\Ejercicio\\src\\main\\java\\txt\\registro.txt\\");
+            String s = a.LeerTxt("txt\\registro.txt");
             System.out.println(s);
         } catch (IOException ex) {
             Logger.getLogger(manejo_datos.class.getName()).log(Level.SEVERE, null, ex);
