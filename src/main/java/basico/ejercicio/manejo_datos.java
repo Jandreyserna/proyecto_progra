@@ -41,9 +41,24 @@ public class manejo_datos {
         datos[2] = correo;
         datos[3] = direccion;
         datos[4] = alias;
-        archivos.EscribeFichero("C:\\Users\\jandr\\Documents\\NetBeansProjects\\Ejercicio\\src\\main\\java\\txt\\registro.txt", datos);  
+        archivos.EscribeFichero("txt\\registro.txt", datos);  
     }
     
-    
+ // public void Rellenar_tabla(String a,String b,String c,String d,String e){
+        
+        
+   //     DefaultTableModel modelo = (DefaultTableModel)Main.Tabla.getModel();
+        //Esto es obligatorio
+     //   if(modelo.getRowCount()>0){
+       //     for (int i = modelo.getRowCount() -1; i >= 0; i--){
+         //       modelo.removeRow(i);
+           // } 
+        //}
+        
+        
+
+            //String[] fila = {a, b, c, d, e}; //las comas separan las filas
+          //  modelo.addRow(fila); //Instrucción de llenado de fila
+        //}  
     
 }

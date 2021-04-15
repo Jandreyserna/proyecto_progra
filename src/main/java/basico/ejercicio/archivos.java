@@ -42,9 +42,6 @@ public class archivos {
         FileWriter fichero = null;
         BufferedWriter bw;
         PrintWriter pw = null;
-        for(int w = 0; w < 5; w = w +1){
-            System.out.println(datos[w]);
-        }
         
         try
         {
@@ -53,14 +50,12 @@ public class archivos {
             bw = new BufferedWriter(fichero);
             pw = new PrintWriter(bw);
             
-            for(int i = 0; i < 5; i = i + 1){
-                
-                boolean resultado;
-                
+            for(int i = 0; i < 5; i = i + 1){             
+                boolean resultado;       
                 if (i == 1){
                     System.out.println(datos[i]);
                    resultado = comparar_numeros(datos[i]);
-                   if(resultado == false){
+                   if(resultado == true){
                        JOptionPane.showMessageDialog(null, "El numero ya existe en este registro");
                    }else{
                        pw.write(datos[i]);
@@ -75,28 +70,25 @@ public class archivos {
                 }
                 
             }
-
-            
+        
             pw.close();
             bw.close();
-            
-            
-            
+
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null,"Ha sucedido un error" + e);
         } 
     }
+    
 public static boolean comparar_numeros(String dato){
     int encontrado = 0;
     String[] dividido_puntos = texto.split(";");
-    
     for(int x = 0; x < dividido_puntos.length; x = x + 1){
         String dividido_comas;
         dividido_comas = dividido_puntos[x];
         String[] dividido = dividido_comas.split(","); 
         
         for (int z = 0; z < dividido.length; z = z + 1){
-            if(dividido[z] == dato){
+            if(dato.equals(dividido[z])){
                 encontrado = 1;
             }
         }
