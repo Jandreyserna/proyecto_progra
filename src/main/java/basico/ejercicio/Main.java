@@ -18,9 +18,10 @@ public class Main extends javax.swing.JFrame {
     public static String correo;
     public static String direccion;
     public static String alias;
+    public static String lugar;
     manejo_datos manejo = new manejo_datos();
     
-     public void Rellenar_tabla(String a,String b,String c,String d,String e){
+     public void Rellenar_tabla(String a,String b,String c,String d,String e, String f){
         
         
         DefaultTableModel modelo = (DefaultTableModel)Tabla.getModel();
@@ -30,7 +31,7 @@ public class Main extends javax.swing.JFrame {
                 modelo.removeRow(i);
             } 
         }
-            String[] fila = {a, b, c, d, e}; //las comas separan las filas
+            String[] fila = {a, b, c, d, e, f}; //las comas separan las filas
             modelo.addRow(fila); //Instrucción de llenado de fila
         }
 
@@ -70,6 +71,8 @@ public class Main extends javax.swing.JFrame {
         contNumeros = new javax.swing.JSpinner();
         PanelTelefono = new javax.swing.JPanel();
         txtNumero = new javax.swing.JTextField();
+        LugarTxt = new javax.swing.JTextField();
+        Lugar = new javax.swing.JLabel();
         pnlTabla = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
@@ -150,6 +153,10 @@ public class Main extends javax.swing.JFrame {
         });
         PanelTelefono.add(txtNumero);
 
+        LugarTxt.setToolTipText("");
+
+        Lugar.setText("Lugar donde lo conocío");
+
         javax.swing.GroupLayout pnlIngresarLayout = new javax.swing.GroupLayout(pnlIngresar);
         pnlIngresar.setLayout(pnlIngresarLayout);
         pnlIngresarLayout.setHorizontalGroup(
@@ -165,34 +172,31 @@ public class Main extends javax.swing.JFrame {
                                 .addComponent(contNumeros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lblCorreo)
                             .addComponent(jLabel2)
-                            .addComponent(lblIngresar))
+                            .addComponent(lblIngresar)
+                            .addComponent(Lugar))
+                        .addGap(18, 18, 18)
                         .addGroup(pnlIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlIngresarLayout.createSequentialGroup()
-                                .addGroup(pnlIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(pnlIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(pnlIngresarLayout.createSequentialGroup()
-                                        .addGap(124, 124, 124)
-                                        .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(pnlIngresarLayout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addGroup(pnlIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(pnlIngresarLayout.createSequentialGroup()
-                                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(30, 30, 30)
-                                                .addComponent(jLabel3)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(txtAlias, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(0, 20, Short.MAX_VALUE))
-                            .addGroup(pnlIngresarLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(PanelTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(30, 30, 30)
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtAlias, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtDireccion, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(LugarTxt, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(0, 474, Short.MAX_VALUE))
+                            .addComponent(PanelTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(pnlIngresarLayout.createSequentialGroup()
                         .addGap(212, 212, 212)
-                        .addComponent(jLabel1))
-                    .addGroup(pnlIngresarLayout.createSequentialGroup()
-                        .addGap(235, 235, 235)
-                        .addComponent(btnEnviar)))
+                        .addComponent(jLabel1)))
                 .addContainerGap())
+            .addGroup(pnlIngresarLayout.createSequentialGroup()
+                .addGap(261, 261, 261)
+                .addComponent(btnEnviar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlIngresarLayout.setVerticalGroup(
             pnlIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,8 +224,12 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(pnlIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LugarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Lugar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(btnEnviar)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pnlTabla.setVisible(false);
@@ -234,7 +242,7 @@ public class Main extends javax.swing.JFrame {
         );
         pnlTablaLayout.setVerticalGroup(
             pnlTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 421, Short.MAX_VALUE)
+            .addGap(0, 409, Short.MAX_VALUE)
         );
 
         Tabla.setModel(new javax.swing.table.DefaultTableModel(
@@ -242,7 +250,7 @@ public class Main extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre", "Teléfono", "Email", "Direccion", "Alias"
+                "Nombre", "Teléfono", "Email", "Direccion", "Alias", "Lugar Conocio"
             }
         ));
         Tabla.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -334,16 +342,18 @@ public class Main extends javax.swing.JFrame {
         correo = txtCorreo.getText();
         direccion = txtDireccion.getText();
         alias = txtAlias.getText();
-        manejo.llenarTxt( nombre,numero, correo, direccion,alias);
+        lugar = LugarTxt.getText();
+        manejo.llenarTxt( nombre,numero, correo, direccion,alias,lugar);
         
         txtNombre.setText("");
         txtNumero.setText("");
         txtCorreo.setText("");
         txtDireccion.setText("");
         txtAlias.setText("");
+        LugarTxt.setText("");
         pnlIngresar.updateUI();
         
-        Rellenar_tabla(nombre, numero, correo, direccion, alias);
+        Rellenar_tabla(nombre, numero, correo, direccion, alias, lugar);
         
     }//GEN-LAST:event_btnEnviarActionPerformed
 
@@ -416,6 +426,7 @@ public class Main extends javax.swing.JFrame {
         String c = "";
         String d = "";
         String e = "";
+        String f = "";
             String[] Puntos = manejo.devolverString(); 
             for(int x = 0; x < Puntos.length; x = x + 1){
                 String Comas;
@@ -442,10 +453,9 @@ public class Main extends javax.swing.JFrame {
                             default:
                                 JOptionPane.showMessageDialog(null, "No hay nada en el registro");
                                 break;
+                    }                      
                     }
-                         
-                    }
-                String[] fila = {a,b,c,d,e};
+                String[] fila = {a,b,c,d,e,f};
                 modelo.addRow(fila);
             }//las comas separan las filas
          
@@ -489,6 +499,8 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Lugar;
+    private javax.swing.JTextField LugarTxt;
     private javax.swing.JPanel PanelTelefono;
     private javax.swing.JTable Tabla;
     private javax.swing.JButton btnEnviar;

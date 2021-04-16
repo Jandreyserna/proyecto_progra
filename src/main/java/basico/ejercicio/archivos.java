@@ -50,7 +50,7 @@ public class archivos {
             bw = new BufferedWriter(fichero);
             pw = new PrintWriter(bw);
             
-            for(int i = 0; i < 5; i = i + 1){             
+            for(int i = 0; i < 6; i = i + 1){             
                 boolean resultado;       
                 if (i == 1){
                     //System.out.println(datos[i]);
@@ -61,7 +61,7 @@ public class archivos {
                        pw.write(datos[i]);
                        pw.append(",");
                    }
-                }else if(i == 4){
+                }else if(i == 5){
                     pw.write(datos[i]);
                     pw.append(";");
                 }else{

@@ -32,8 +32,8 @@ public class manejo_datos {
         }
         
     }
-    public void llenarTxt(String nombre,String numero, String correo, String direccion,String alias){
-        String[] datos = new String[5];
+    public void llenarTxt(String nombre,String numero, String correo, String direccion,String alias, String lugar){
+        String[] datos = new String[6];
         archivos llenar = new archivos();
         
         datos[0] = nombre;
@@ -41,6 +41,7 @@ public class manejo_datos {
         datos[2] = correo;
         datos[3] = direccion;
         datos[4] = alias;
+        datos[5] = lugar;
         archivos.EscribeFichero("txt\\registro.txt", datos);  
     }
     
