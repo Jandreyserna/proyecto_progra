@@ -83,9 +83,9 @@ public static boolean comparar_numeros(String dato){
     int encontrado = 0;
     String[] divididoPuntos = texto.split(";");
     for(int x = 0; x < divididoPuntos.length; x = x + 1){
-        String dividido_comas;
-        dividido_comas = divididoPuntos[x];
-        String[] dividido = dividido_comas.split(","); 
+        String divididoComas;
+        divididoComas = divididoPuntos[x];
+        String[] dividido = divididoComas.split(","); 
         
         for (int z = 0; z < dividido.length; z = z + 1){
             if(dato.equals(dividido[z])){
