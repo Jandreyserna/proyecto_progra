@@ -7,8 +7,10 @@ package basico.ejercicio;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 public class Main extends javax.swing.JFrame {
 
@@ -18,12 +20,26 @@ public class Main extends javax.swing.JFrame {
     public static String direccion;
     public static String alias;
     manejo_datos manejo = new manejo_datos();
+    
+     public void Rellenar_tabla(String a,String b,String c,String d,String e){
+        
+        
+        DefaultTableModel modelo = (DefaultTableModel)Tabla.getModel();
+        //Esto es obligatorio
+        if(modelo.getRowCount()>0){
+            for (int i = modelo.getRowCount() -1; i >= 0; i--){
+                modelo.removeRow(i);
+            } 
+        }
+            String[] fila = {a, b, c, d, e}; //las comas separan las filas
+            modelo.addRow(fila); //Instrucción de llenado de fila
+        }
 
     /**
      * Creates new form Ej
      */
     public Main() {
-        manejo.abrirTxt();
+        manejo_datos.abrirTxt();
         initComponents();
         setSize(600, 900);
         setLocationRelativeTo(null);
@@ -121,7 +137,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         PanelTelefono.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        PanelTelefono.setLayout(new java.awt.GridLayout());
+        PanelTelefono.setLayout(new java.awt.GridLayout(1, 0));
 
         txtNumero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,19 +169,24 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(lblIngresar))
                         .addGroup(pnlIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlIngresarLayout.createSequentialGroup()
-                                .addGap(124, 124, 124)
-                                .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlIngresarLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
                                 .addGroup(pnlIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(pnlIngresarLayout.createSequentialGroup()
-                                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(30, 30, 30)
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtAlias, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(PanelTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)))))
+                                        .addGap(124, 124, 124)
+                                        .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(pnlIngresarLayout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addGroup(pnlIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(pnlIngresarLayout.createSequentialGroup()
+                                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(30, 30, 30)
+                                                .addComponent(jLabel3)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(txtAlias, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(0, 20, Short.MAX_VALUE))
+                            .addGroup(pnlIngresarLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(PanelTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(pnlIngresarLayout.createSequentialGroup()
                         .addGap(212, 212, 212)
                         .addComponent(jLabel1))
@@ -185,7 +206,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(txtAlias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblNumero)
@@ -201,7 +222,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnEnviar)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         pnlTabla.setVisible(false);
@@ -210,7 +231,7 @@ public class Main extends javax.swing.JFrame {
         pnlTabla.setLayout(pnlTablaLayout);
         pnlTablaLayout.setHorizontalGroup(
             pnlTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 566, Short.MAX_VALUE)
         );
         pnlTablaLayout.setVerticalGroup(
             pnlTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,6 +246,11 @@ public class Main extends javax.swing.JFrame {
                 "Nombre", "Teléfono", "Email", "Direccion", "Alias"
             }
         ));
+        Tabla.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                TablaPropertyChange(evt);
+            }
+        });
         jScrollPane2.setViewportView(Tabla);
 
         miAgenda.setText("Agenda");
@@ -303,19 +329,29 @@ public class Main extends javax.swing.JFrame {
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
         // TODO add your handling code here:
+        
         nombre = txtNombre.getText();
         numero = txtNumero.getText();
         correo = txtCorreo.getText();
         direccion = txtDireccion.getText();
         alias = txtAlias.getText();
         manejo.llenarTxt( nombre,numero, correo, direccion,alias);
-        pnlTabla.setVisible(true);
-
+        
+        txtNombre.setText("");
+        txtNumero.setText("");
+        txtCorreo.setText("");
+        txtDireccion.setText("");
+        txtAlias.setText("");
+        pnlIngresar.updateUI();
+        
+        Rellenar_tabla(nombre, numero, correo, direccion, alias);
+        
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     private void miVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miVerActionPerformed
         pnlIngresar.setVisible(false);
         pnlTabla.setVisible(true);
+        Tabla.updateUI();
 
     }//GEN-LAST:event_miVerActionPerformed
 
@@ -364,6 +400,58 @@ public class Main extends javax.swing.JFrame {
             PanelTelefono.updateUI();
         }
     }//GEN-LAST:event_contNumerosStateChanged
+
+    @SuppressWarnings("empty-statement")
+    private void TablaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_TablaPropertyChange
+        // TODO add your handling code here:
+         DefaultTableModel modelo = (DefaultTableModel)Tabla.getModel();
+        //Esto es obligatorio
+        if(modelo.getRowCount()>0){
+            for (int i = modelo.getRowCount() -1; i >= 0; i--){
+                modelo.removeRow(i);
+            } 
+        }
+        
+        String a = "";
+        String b = "";
+        String c = "";
+        String d = "";
+        String e = "";
+            String[] Puntos = manejo.devolverString(); 
+            for(int x = 0; x < Puntos.length; x = x + 1){
+                String Comas;
+                Comas = Puntos[x];
+                String[] dividido = Comas.split(","); 
+        
+                for (int z = 0; z < dividido.length; z = z + 1){
+                    switch(z){
+                            case 0:
+                                a = dividido[z];
+                                break;
+                            case 1:
+                                b = dividido[z];
+                                break;
+                            case 2:
+                                c = dividido[z];
+                                break;
+                            case 3:
+                                d = dividido[z];
+                                break;
+                            case 4:
+                                e = dividido[z];
+                                break;
+                            default:
+                                JOptionPane.showMessageDialog(null, "No hay nada en el registro");
+                                break;
+                    }
+                         
+                    }
+                String[] fila = {a,b,c,d,e};
+                modelo.addRow(fila);
+            }//las comas separan las filas
+         
+            
+    }//GEN-LAST:event_TablaPropertyChange
 
     /**
      * @param args the command line arguments

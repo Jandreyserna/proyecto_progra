@@ -44,6 +44,12 @@ public class manejo_datos {
         archivos.EscribeFichero("txt\\registro.txt", datos);  
     }
     
+    public String[] devolverString(){
+        String[] datos = archivos.puntoComa();
+        
+        return datos;
+    }
+    
  // public void Rellenar_tabla(String a,String b,String c,String d,String e){
         
         

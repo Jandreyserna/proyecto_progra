@@ -53,7 +53,7 @@ public class archivos {
             for(int i = 0; i < 5; i = i + 1){             
                 boolean resultado;       
                 if (i == 1){
-                    System.out.println(datos[i]);
+                    //System.out.println(datos[i]);
                    resultado = comparar_numeros(datos[i]);
                    if(resultado == true){
                        JOptionPane.showMessageDialog(null, "El numero ya existe en este registro");
@@ -81,10 +81,10 @@ public class archivos {
     
 public static boolean comparar_numeros(String dato){
     int encontrado = 0;
-    String[] dividido_puntos = texto.split(";");
-    for(int x = 0; x < dividido_puntos.length; x = x + 1){
+    String[] divididoPuntos = texto.split(";");
+    for(int x = 0; x < divididoPuntos.length; x = x + 1){
         String dividido_comas;
-        dividido_comas = dividido_puntos[x];
+        dividido_comas = divididoPuntos[x];
         String[] dividido = dividido_comas.split(","); 
         
         for (int z = 0; z < dividido.length; z = z + 1){
@@ -95,6 +95,14 @@ public static boolean comparar_numeros(String dato){
     }
         return encontrado == 1;
     }
+
+public static String[] puntoComa(){
+    String[] divididoPuntos = texto.split(";");
+    
+    return divididoPuntos; 
+    
+    
+}
     
 }
   
