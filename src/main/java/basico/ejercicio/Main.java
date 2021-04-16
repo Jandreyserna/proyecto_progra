@@ -54,6 +54,7 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelBuscador = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAgenda = new javax.swing.JTable();
         pnlIngresar = new javax.swing.JPanel();
@@ -74,6 +75,7 @@ public class Main extends javax.swing.JFrame {
         LugarTxt = new javax.swing.JTextField();
         Lugar = new javax.swing.JLabel();
         pnlTabla = new javax.swing.JPanel();
+        pnlBuscar = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -81,6 +83,18 @@ public class Main extends javax.swing.JFrame {
         miIngresar = new javax.swing.JMenuItem();
         miVer = new javax.swing.JMenuItem();
         miBuscar = new javax.swing.JMenu();
+        Buscador = new javax.swing.JMenuItem();
+
+        javax.swing.GroupLayout panelBuscadorLayout = new javax.swing.GroupLayout(panelBuscador);
+        panelBuscador.setLayout(panelBuscadorLayout);
+        panelBuscadorLayout.setHorizontalGroup(
+            panelBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 635, Short.MAX_VALUE)
+        );
+        panelBuscadorLayout.setVerticalGroup(
+            panelBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 337, Short.MAX_VALUE)
+        );
 
         tblAgenda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -187,14 +201,14 @@ public class Main extends javax.swing.JFrame {
                                     .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtDireccion, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(LugarTxt, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(0, 474, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(PanelTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(pnlIngresarLayout.createSequentialGroup()
                         .addGap(212, 212, 212)
                         .addComponent(jLabel1)))
                 .addContainerGap())
             .addGroup(pnlIngresarLayout.createSequentialGroup()
-                .addGap(261, 261, 261)
+                .addGap(336, 336, 336)
                 .addComponent(btnEnviar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -238,11 +252,11 @@ public class Main extends javax.swing.JFrame {
         pnlTabla.setLayout(pnlTablaLayout);
         pnlTablaLayout.setHorizontalGroup(
             pnlTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 566, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         pnlTablaLayout.setVerticalGroup(
             pnlTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 409, Short.MAX_VALUE)
+            .addGap(0, 566, Short.MAX_VALUE)
         );
 
         Tabla.setModel(new javax.swing.table.DefaultTableModel(
@@ -259,6 +273,23 @@ public class Main extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(Tabla);
+
+        javax.swing.GroupLayout pnlBuscarLayout = new javax.swing.GroupLayout(pnlBuscar);
+        pnlBuscar.setLayout(pnlBuscarLayout);
+        pnlBuscarLayout.setHorizontalGroup(
+            pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlBuscarLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(140, Short.MAX_VALUE))
+        );
+        pnlBuscarLayout.setVerticalGroup(
+            pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBuscarLayout.createSequentialGroup()
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         miAgenda.setText("Agenda");
 
@@ -281,6 +312,20 @@ public class Main extends javax.swing.JFrame {
         jMenuBar1.add(miAgenda);
 
         miBuscar.setText("Buscar");
+        miBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miBuscarActionPerformed(evt);
+            }
+        });
+
+        Buscador.setText("Panel");
+        Buscador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscadorActionPerformed(evt);
+            }
+        });
+        miBuscar.add(Buscador);
+
         jMenuBar1.add(miBuscar);
 
         setJMenuBar(jMenuBar1);
@@ -292,9 +337,9 @@ public class Main extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pnlTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addGap(516, 516, 516)
+                .addComponent(pnlBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
             .addComponent(pnlIngresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -306,10 +351,10 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(pnlTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(253, 253, 253))
+                        .addGap(375, 375, 375))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pnlBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
@@ -332,6 +377,7 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         pnlIngresar.setVisible(true);
         pnlTabla.setVisible(false);
+        pnlTabla.updateUI();
     }//GEN-LAST:event_miIngresarActionPerformed
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
@@ -416,8 +462,9 @@ public class Main extends javax.swing.JFrame {
          DefaultTableModel modelo = (DefaultTableModel)Tabla.getModel();
         //Esto es obligatorio
         if(modelo.getRowCount()>0){
+            int a = 0;
             for (int i = modelo.getRowCount() -1; i >= 0; i--){
-                modelo.removeRow(i);
+                modelo.removeRow(i);        
             } 
         }
         
@@ -450,17 +497,26 @@ public class Main extends javax.swing.JFrame {
                             case 4:
                                 e = dividido[z];
                                 break;
-                            default:
-                                JOptionPane.showMessageDialog(null, "No hay nada en el registro");
-                                break;
+                            case 5:
+                                f = dividido[z];
+                                break; 
                     }                      
                     }
                 String[] fila = {a,b,c,d,e,f};
                 modelo.addRow(fila);
-            }//las comas separan las filas
-         
-            
+            }//las comas separan las filas           
     }//GEN-LAST:event_TablaPropertyChange
+
+    private void miBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miBuscarActionPerformed
+        pnlTabla.setVisible(false); 
+        panelBuscador.setVisible(true);
+         
+    }//GEN-LAST:event_miBuscarActionPerformed
+
+    private void BuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscadorActionPerformed
+        // TODO add your handling code here:
+        pnlBuscar.setVisible(true);
+    }//GEN-LAST:event_BuscadorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -499,6 +555,7 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Buscador;
     private javax.swing.JLabel Lugar;
     private javax.swing.JTextField LugarTxt;
     private javax.swing.JPanel PanelTelefono;
@@ -518,6 +575,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenu miBuscar;
     private javax.swing.JMenuItem miIngresar;
     private javax.swing.JMenuItem miVer;
+    private javax.swing.JPanel panelBuscador;
+    private javax.swing.JPanel pnlBuscar;
     private javax.swing.JPanel pnlIngresar;
     private javax.swing.JPanel pnlTabla;
     private javax.swing.JTable tblAgenda;
