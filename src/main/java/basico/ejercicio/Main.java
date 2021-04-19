@@ -359,7 +359,25 @@ public class Main extends javax.swing.JFrame {
             alias = txtAlias.getText();
             lugar = LugarTxt.getText();
             
-            manejo.llenarTxt( nombre,numero , correo, direccion,alias,lugar);
+            if( txtNombre.getText() !=  null && txtNombre.getText() != ""){
+                if( lugar != null){
+                    for (int x = 0; x < numero.length; x++) {
+                        if( numero[x] != null){
+                            if(x+1 == numero.length){
+                                manejo.llenarTxt( nombre,numero , correo, direccion,alias,lugar);
+                            }
+                        }else{
+                            JOptionPane.showMessageDialog(null, "Este campo No puede estar vacio");
+                        }
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Este campo No puede estar vacio");
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Este campo No puede estar vacio");
+            }
+            
+            
             txtNombre.setText("");
             txtCorreo.setText("");
             txtDireccion.setText("");

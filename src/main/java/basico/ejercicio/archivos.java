@@ -58,6 +58,8 @@ public class archivos {
             for (int j = 0; j < numero.length; j++) {
                 resultado = comparar_numeros(numero[j]);
                 if(resultado == true){
+                       j = numero.length;
+                       pw.append(";");
                        JOptionPane.showMessageDialog(null, "El numero ya existe en este registro");
                    } else if(j + 1 == numero.length ){
                        pw.write(numero[j]);
