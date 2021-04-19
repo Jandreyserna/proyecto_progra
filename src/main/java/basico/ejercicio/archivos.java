@@ -37,7 +37,7 @@ public class archivos {
     }
  
      
-    public static void EscribeFichero (String direction,String[] datos){
+    public static void EscribeFichero (String direction,String[] datos, String[] numero) throws IOException{
         File f;
         FileWriter fichero = null;
         BufferedWriter bw;
@@ -50,33 +50,29 @@ public class archivos {
             bw = new BufferedWriter(fichero);
             pw = new PrintWriter(bw);
             
-            for(int i = 0; i < 6; i = i + 1){             
-                boolean resultado;       
-                if (i == 1){
-                    //System.out.println(datos[i]);
-                   resultado = comparar_numeros(datos[i]);
-                   if(resultado == true){
+            for(int i = 0; i < 5; i++){  
+                pw.write(datos[i]);
+                pw.append(",");
+            }
+            boolean resultado;       
+            for (int j = 0; j < numero.length; j++) {
+                resultado = comparar_numeros(numero[j]);
+                if(resultado == true){
                        JOptionPane.showMessageDialog(null, "El numero ya existe en este registro");
+                   } else if(j + 1 == numero.length ){
+                       pw.write(numero[j]);
+                       pw.append(";");
                    }else{
-                       pw.write(datos[i]);
+                       pw.write(numero[j]);
                        pw.append(",");
                    }
-                }else if(i == 5){
-                    pw.write(datos[i]);
-                    pw.append(";");
-                }else{
-                    pw.write(datos[i]);
-                    pw.append(",");
-                }
-                
             }
-        
-            pw.close();
+             pw.close();
             bw.close();
-
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null,"Ha sucedido un error" + e);
-        } 
+   
+            } catch(FileNotFoundException e){ // si no encuentra el archivo muestra el error
+            System.err.println("No se encontro el archivo");    
+        }    
     }
     
 public static boolean comparar_numeros(String dato){

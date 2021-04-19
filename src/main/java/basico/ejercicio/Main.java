@@ -7,14 +7,23 @@ package basico.ejercicio;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public class Main extends javax.swing.JFrame {
+    
+    private final List<JTextField> numeros;
+    private int posicion; 
 
     public static String nombre;
-    public static String numero;
     public static String correo;
     public static String direccion;
     public static String alias;
@@ -41,6 +50,8 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         manejo_datos.abrirTxt();
         initComponents();
+        numeros = new ArrayList <>();
+        posicion = 0;
         setSize(600, 900);
         setLocationRelativeTo(null);
     }
@@ -54,7 +65,6 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelBuscador = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAgenda = new javax.swing.JTable();
         pnlIngresar = new javax.swing.JPanel();
@@ -70,10 +80,10 @@ public class Main extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtAlias = new javax.swing.JTextField();
         contNumeros = new javax.swing.JSpinner();
-        PanelTelefono = new javax.swing.JPanel();
-        txtNumero = new javax.swing.JTextField();
         LugarTxt = new javax.swing.JTextField();
         Lugar = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        pNumeros = new javax.swing.JPanel();
         pnlTabla = new javax.swing.JPanel();
         pnlBuscar = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -84,17 +94,6 @@ public class Main extends javax.swing.JFrame {
         miVer = new javax.swing.JMenuItem();
         miBuscar = new javax.swing.JMenu();
         Buscador = new javax.swing.JMenuItem();
-
-        javax.swing.GroupLayout panelBuscadorLayout = new javax.swing.GroupLayout(panelBuscador);
-        panelBuscador.setLayout(panelBuscadorLayout);
-        panelBuscadorLayout.setHorizontalGroup(
-            panelBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 635, Short.MAX_VALUE)
-        );
-        panelBuscadorLayout.setVerticalGroup(
-            panelBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 337, Short.MAX_VALUE)
-        );
 
         tblAgenda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -115,12 +114,6 @@ public class Main extends javax.swing.JFrame {
 
         lblIngresar.setText("Ingresar Nombre");
 
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreActionPerformed(evt);
-            }
-        });
-
         lblNumero.setText("Ingresar Número");
 
         btnEnviar.setText("Enviar");
@@ -139,12 +132,6 @@ public class Main extends javax.swing.JFrame {
 
         jLabel3.setText("Alias");
 
-        txtAlias.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAliasActionPerformed(evt);
-            }
-        });
-
         contNumeros.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         contNumeros.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -152,24 +139,12 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        PanelTelefono.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        PanelTelefono.setLayout(new java.awt.GridLayout(1, 0));
-
-        txtNumero.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNumeroActionPerformed(evt);
-            }
-        });
-        txtNumero.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtNumeroKeyTyped(evt);
-            }
-        });
-        PanelTelefono.add(txtNumero);
-
         LugarTxt.setToolTipText("");
 
         Lugar.setText("Lugar donde lo conocío");
+
+        pNumeros.setLayout(new javax.swing.BoxLayout(pNumeros, javax.swing.BoxLayout.LINE_AXIS));
+        jScrollPane3.setViewportView(pNumeros);
 
         javax.swing.GroupLayout pnlIngresarLayout = new javax.swing.GroupLayout(pnlIngresar);
         pnlIngresar.setLayout(pnlIngresarLayout);
@@ -190,26 +165,25 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(Lugar))
                         .addGap(18, 18, 18)
                         .addGroup(pnlIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LugarTxt)
                             .addGroup(pnlIngresarLayout.createSequentialGroup()
-                                .addGroup(pnlIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(pnlIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnlIngresarLayout.createSequentialGroup()
+                                        .addGap(138, 138, 138)
+                                        .addComponent(btnEnviar))
+                                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(pnlIngresarLayout.createSequentialGroup()
                                         .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(30, 30, 30)
                                         .addComponent(jLabel3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(txtAlias, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDireccion, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(LugarTxt, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(PanelTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(pnlIngresarLayout.createSequentialGroup()
                         .addGap(212, 212, 212)
                         .addComponent(jLabel1)))
-                .addContainerGap())
-            .addGroup(pnlIngresarLayout.createSequentialGroup()
-                .addGap(336, 336, 336)
-                .addComponent(btnEnviar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlIngresarLayout.setVerticalGroup(
@@ -228,8 +202,8 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(pnlIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblNumero)
                         .addComponent(contNumeros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(PanelTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCorreo)
                     .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -237,27 +211,20 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(pnlIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(pnlIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LugarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Lugar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addGroup(pnlIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlIngresarLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(Lugar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlIngresarLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LugarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addComponent(btnEnviar)
                 .addContainerGap())
         );
 
         pnlTabla.setVisible(false);
-
-        javax.swing.GroupLayout pnlTablaLayout = new javax.swing.GroupLayout(pnlTabla);
-        pnlTabla.setLayout(pnlTablaLayout);
-        pnlTablaLayout.setHorizontalGroup(
-            pnlTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        pnlTablaLayout.setVerticalGroup(
-            pnlTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 566, Short.MAX_VALUE)
-        );
 
         Tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -289,6 +256,22 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(25, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+        );
+
+        javax.swing.GroupLayout pnlTablaLayout = new javax.swing.GroupLayout(pnlTabla);
+        pnlTabla.setLayout(pnlTablaLayout);
+        pnlTablaLayout.setHorizontalGroup(
+            pnlTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTablaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlTablaLayout.setVerticalGroup(
+            pnlTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTablaLayout.createSequentialGroup()
+                .addComponent(pnlBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 157, Short.MAX_VALUE))
         );
 
         miAgenda.setText("Agenda");
@@ -337,9 +320,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pnlTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(516, 516, 516)
-                .addComponent(pnlBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+                .addGap(679, 679, 679))
             .addComponent(pnlIngresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -347,31 +328,13 @@ public class Main extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(pnlIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pnlTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(375, 375, 375))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(pnlBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(18, 18, 18)
+                .addComponent(pnlTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(375, 375, 375))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtNumeroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroKeyTyped
-        // TODO add your handling code here:
-        char validar = evt.getKeyChar();
-        if (Character.isLetter(validar)) {
-            getToolkit().beep();
-            evt.consume();
-
-            JOptionPane.showMessageDialog(null, "Ingrese un valor númerico");
-        }
-
-    }//GEN-LAST:event_txtNumeroKeyTyped
 
     private void miIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miIngresarActionPerformed
         // TODO add your handling code here:
@@ -381,61 +344,58 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_miIngresarActionPerformed
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            String[] numero = new String[pNumeros.getComponents().length] ;
+            for (int j = 0; j < pNumeros.getComponents().length ; j++) {
+                numero[j] = numeros.get(j).getText();    
+                System.out.println(Arrays.toString(numero));
+            }
+            
+            
+            nombre = txtNombre.getText();
+            correo = txtCorreo.getText();
+            direccion = txtDireccion.getText();
+            alias = txtAlias.getText();
+            lugar = LugarTxt.getText();
+            
+            manejo.llenarTxt( nombre,numero , correo, direccion,alias,lugar);
+            txtNombre.setText("");
+            txtCorreo.setText("");
+            txtDireccion.setText("");
+            txtAlias.setText("");
+            LugarTxt.setText("");
+            for (int j = 0; j < pNumeros.getComponents().length ; j++) {
+                numeros.get(j).setText("");    
+            }
+            pnlIngresar.updateUI();
+            Rellenar_tabla(nombre, "1", correo, direccion, alias, lugar);
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                  
         
-        nombre = txtNombre.getText();
-        numero = txtNumero.getText();
-        correo = txtCorreo.getText();
-        direccion = txtDireccion.getText();
-        alias = txtAlias.getText();
-        lugar = LugarTxt.getText();
-        manejo.llenarTxt( nombre,numero, correo, direccion,alias,lugar);
         
-        txtNombre.setText("");
-        txtNumero.setText("");
-        txtCorreo.setText("");
-        txtDireccion.setText("");
-        txtAlias.setText("");
-        LugarTxt.setText("");
-        pnlIngresar.updateUI();
         
-        Rellenar_tabla(nombre, numero, correo, direccion, alias, lugar);
+        
         
     }//GEN-LAST:event_btnEnviarActionPerformed
 
-    private void miVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miVerActionPerformed
-        pnlIngresar.setVisible(false);
-        pnlTabla.setVisible(true);
-        Tabla.updateUI();
-
-    }//GEN-LAST:event_miVerActionPerformed
-
-    private void txtAliasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAliasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAliasActionPerformed
-
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreActionPerformed
-
-    private void txtNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNumeroActionPerformed
-
     private void contNumerosStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_contNumerosStateChanged
-        // TODO add your handling code here:
+             
+// TODO add your handling code here:
         int num = (Integer)contNumeros.getValue();
-        int contenido = PanelTelefono.getComponents().length;
+        int contenido = pNumeros.getComponents().length;
         if (num > contenido){
             for(int i = contenido; i < num ; i++){
-                JTextField componente = new JTextField();
+                JTextField componente = new JTextField(posicion);           
                 componente.addKeyListener(new KeyAdapter(){
                     @Override
                     public void keyTyped(KeyEvent e){
                         if (e.getKeyChar() < '0' || e.getKeyChar() > '9'){
                             JOptionPane.showMessageDialog(null, "Ingrese un valor númerico");
                             e.consume();
-                            }
+                           }
                             //super.KeyTyped(e);
                         }
 
@@ -443,16 +403,19 @@ public class Main extends javax.swing.JFrame {
                         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
                     }
                     
-                });
-                
-                PanelTelefono.add(componente);
+                });               
+                pNumeros.add(componente);
+                numeros.add(componente);
+                posicion++;
             }
-            PanelTelefono.updateUI();
+            pNumeros.updateUI();
         }else if (num < contenido){
             for(int x = contenido; x > num ; x--){
-                PanelTelefono.remove(x - 1);
+                pNumeros.remove(x - 1);
+                numeros.remove(x -1);
+                posicion--;
             }
-            PanelTelefono.updateUI();
+            pNumeros.updateUI();
         }
     }//GEN-LAST:event_contNumerosStateChanged
 
@@ -508,15 +471,17 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_TablaPropertyChange
 
     private void miBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miBuscarActionPerformed
-        pnlTabla.setVisible(false); 
-        panelBuscador.setVisible(true);
-         
+        pnlTabla.setVisible(false);  
     }//GEN-LAST:event_miBuscarActionPerformed
 
     private void BuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscadorActionPerformed
         // TODO add your handling code here:
         pnlBuscar.setVisible(true);
     }//GEN-LAST:event_BuscadorActionPerformed
+
+    private void miVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miVerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_miVerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -558,7 +523,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem Buscador;
     private javax.swing.JLabel Lugar;
     private javax.swing.JTextField LugarTxt;
-    private javax.swing.JPanel PanelTelefono;
     private javax.swing.JTable Tabla;
     private javax.swing.JButton btnEnviar;
     private javax.swing.JSpinner contNumeros;
@@ -568,6 +532,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblCorreo;
     private javax.swing.JLabel lblIngresar;
     private javax.swing.JLabel lblNumero;
@@ -575,7 +540,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenu miBuscar;
     private javax.swing.JMenuItem miIngresar;
     private javax.swing.JMenuItem miVer;
-    private javax.swing.JPanel panelBuscador;
+    private javax.swing.JPanel pNumeros;
     private javax.swing.JPanel pnlBuscar;
     private javax.swing.JPanel pnlIngresar;
     private javax.swing.JPanel pnlTabla;
@@ -584,6 +549,5 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtNumero;
     // End of variables declaration//GEN-END:variables
 }
