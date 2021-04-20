@@ -5,10 +5,8 @@
  */
 package basico.ejercicio;
 
-import com.sun.tools.javac.util.StringUtils;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -160,17 +158,22 @@ public class Main extends javax.swing.JFrame {
             .addGroup(pnlIngresarLayout.createSequentialGroup()
                 .addGroup(pnlIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlIngresarLayout.createSequentialGroup()
-                        .addGap(48, 48, 48)
                         .addGroup(pnlIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlIngresarLayout.createSequentialGroup()
-                                .addComponent(lblNumero)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(contNumeros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblCorreo)
-                            .addComponent(jLabel2)
-                            .addComponent(lblIngresar)
-                            .addComponent(Lugar))
-                        .addGap(18, 18, 18)
+                                .addGap(48, 48, 48)
+                                .addGroup(pnlIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnlIngresarLayout.createSequentialGroup()
+                                        .addComponent(lblNumero)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(contNumeros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel2)
+                                    .addComponent(lblIngresar)
+                                    .addComponent(Lugar))
+                                .addGap(34, 34, 34))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlIngresarLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lblCorreo)
+                                .addGap(18, 18, 18)))
                         .addGroup(pnlIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LugarTxt)
                             .addGroup(pnlIngresarLayout.createSequentialGroup()
@@ -187,11 +190,11 @@ public class Main extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(txtAlias, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGap(0, 942, Short.MAX_VALUE))))
                     .addGroup(pnlIngresarLayout.createSequentialGroup()
                         .addGap(212, 212, 212)
                         .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(952, Short.MAX_VALUE))
         );
         pnlIngresarLayout.setVerticalGroup(
             pnlIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,12 +212,12 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(pnlIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblNumero)
                         .addComponent(contNumeros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCorreo)
-                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
+                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCorreo))
+                .addGap(18, 18, 18)
                 .addGroup(pnlIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -383,7 +386,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(1811, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -394,7 +397,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(pnlTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(pnlBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(202, Short.MAX_VALUE))
+                .addContainerGap(205, Short.MAX_VALUE))
         );
 
         pack();
@@ -417,7 +420,7 @@ public class Main extends javax.swing.JFrame {
                 System.out.println(Arrays.toString(numero));
             }
             
-            
+            boolean repetido;
             nombre = txtNombre.getText();
             correo = txtCorreo.getText();
             direccion = txtDireccion.getText();
@@ -429,7 +432,13 @@ public class Main extends javax.swing.JFrame {
                     for (int x = 0; x < numero.length; x++) {
                         if( numero[x].length() != 0){
                             if(x+1 == numero.length){
-                                manejo.llenarTxt( nombre,numero , correo, direccion,alias,lugar);
+                               repetido =  manejo.repetido(nombre);
+                               if(repetido == false){
+                                   manejo.llenarTxt( nombre,numero , correo, direccion,alias,lugar);
+                               }else{
+                                   JOptionPane.showMessageDialog(null, "Este nombre ya existe en el registro");
+                               }
+                                
                             }
                         }else{
                             JOptionPane.showMessageDialog(null, "Este campo numero No puede estar vacio");

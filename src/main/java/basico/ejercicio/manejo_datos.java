@@ -58,5 +58,10 @@ public class manejo_datos {
         String[] encontrados = archivos.busqueda(Nombre);
         return encontrados;
     }
+ 
+    boolean repetido(String nombre) {
+         boolean repetido = archivos.Busquedarepetido(nombre);
+     return repetido;
+    }
     
 }

@@ -14,7 +14,23 @@ import javax.swing.JOptionPane;
  */
 public class archivos {
     public static String texto = "";
-    
+
+    static boolean Busquedarepetido(String nombre) {
+        boolean encontrado = false;
+        String[] divididoPuntos = texto.split(";");
+        for(int x = 0; x < divididoPuntos.length; x = x + 1){
+            String divididoComas;
+            divididoComas = divididoPuntos[x];
+            String[] dividido = divididoComas.split(","); 
+        
+            for (int z = 0; z < dividido.length; z = z + 1){
+                if(nombre.equals(dividido[z])){
+                  encontrado = true;
+                }
+            }
+        }
+        return encontrado;
+    }
     
     public String LeerTxt(String direction) throws IOException{// direccion del archivo
         
@@ -119,6 +135,9 @@ public static String[] busqueda(String nombre){
         return null;
     
 }
+
+
+
 public static String[] puntoComa(){
     String[] divididoPuntos = texto.split(";");
     
