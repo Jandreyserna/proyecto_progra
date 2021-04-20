@@ -5,6 +5,7 @@
  */
 package basico.ejercicio;
 
+import com.sun.tools.javac.util.StringUtils;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.FileNotFoundException;
@@ -85,9 +86,15 @@ public class Main extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         pNumeros = new javax.swing.JPanel();
         pnlTabla = new javax.swing.JPanel();
-        pnlBuscar = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
+        pnlBuscar = new javax.swing.JPanel();
+        busca = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        BotonBuscar = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tablabusqueda = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         miAgenda = new javax.swing.JMenu();
         miIngresar = new javax.swing.JMenuItem();
@@ -231,7 +238,7 @@ public class Main extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre", "Teléfono", "Email", "Direccion", "Alias", "Lugar Conocio"
+                "Nombre", "Email", "Direccion", "Alias", "Lugar Conocio", "Teléfono"
             }
         ));
         Tabla.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -241,37 +248,90 @@ public class Main extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(Tabla);
 
-        javax.swing.GroupLayout pnlBuscarLayout = new javax.swing.GroupLayout(pnlBuscar);
-        pnlBuscar.setLayout(pnlBuscarLayout);
-        pnlBuscarLayout.setHorizontalGroup(
-            pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlBuscarLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(140, Short.MAX_VALUE))
-        );
-        pnlBuscarLayout.setVerticalGroup(
-            pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBuscarLayout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
         javax.swing.GroupLayout pnlTablaLayout = new javax.swing.GroupLayout(pnlTabla);
         pnlTabla.setLayout(pnlTablaLayout);
         pnlTablaLayout.setHorizontalGroup(
             pnlTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlTablaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnlBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(192, Short.MAX_VALUE))
         );
         pnlTablaLayout.setVerticalGroup(
             pnlTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlTablaLayout.createSequentialGroup()
-                .addComponent(pnlBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 157, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+
+        busca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscaActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        jLabel4.setText("MI BUSCADOR");
+
+        BotonBuscar.setText("Buscar");
+        BotonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonBuscarActionPerformed(evt);
+            }
+        });
+
+        tablabusqueda.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "nombre", "correo", "Direccion", "alias", "lugar", "telefono"
+            }
+        ));
+        jScrollPane4.setViewportView(tablabusqueda);
+
+        jButton1.setText("Actualizar");
+
+        javax.swing.GroupLayout pnlBuscarLayout = new javax.swing.GroupLayout(pnlBuscar);
+        pnlBuscar.setLayout(pnlBuscarLayout);
+        pnlBuscarLayout.setHorizontalGroup(
+            pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlBuscarLayout.createSequentialGroup()
+                .addGroup(pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
+                    .addGroup(pnlBuscarLayout.createSequentialGroup()
+                        .addGroup(pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlBuscarLayout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addGroup(pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(busca, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(BotonBuscar))
+                            .addGroup(pnlBuscarLayout.createSequentialGroup()
+                                .addGap(256, 256, 256)
+                                .addComponent(jButton1)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        pnlBuscarLayout.setVerticalGroup(
+            pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlBuscarLayout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addGroup(pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(busca, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotonBuscar))
+                .addGap(33, 33, 33)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jButton1)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         miAgenda.setText("Agenda");
@@ -317,20 +377,24 @@ public class Main extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pnlTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(679, 679, 679))
             .addComponent(pnlIngresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(1811, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(pnlIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(pnlTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(375, 375, 375))
+                .addComponent(pnlBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(202, Short.MAX_VALUE))
         );
 
         pack();
@@ -340,7 +404,8 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         pnlIngresar.setVisible(true);
         pnlTabla.setVisible(false);
-        pnlTabla.updateUI();
+        pnlBuscar.setVisible(false);
+        
     }//GEN-LAST:event_miIngresarActionPerformed
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
@@ -359,22 +424,22 @@ public class Main extends javax.swing.JFrame {
             alias = txtAlias.getText();
             lugar = LugarTxt.getText();
             
-            if( txtNombre.getText() !=  null && txtNombre.getText() != ""){
-                if( lugar != null){
+            if( txtNombre.getText().length() !=  0){
+                if( LugarTxt.getText().length() != 0){
                     for (int x = 0; x < numero.length; x++) {
-                        if( numero[x] != null){
+                        if( numero[x].length() != 0){
                             if(x+1 == numero.length){
                                 manejo.llenarTxt( nombre,numero , correo, direccion,alias,lugar);
                             }
                         }else{
-                            JOptionPane.showMessageDialog(null, "Este campo No puede estar vacio");
+                            JOptionPane.showMessageDialog(null, "Este campo numero No puede estar vacio");
                         }
                     }
                 }else{
-                    JOptionPane.showMessageDialog(null, "Este campo No puede estar vacio");
+                    JOptionPane.showMessageDialog(null, "Este campo Lugar No puede estar vacio");
                 }
             }else{
-                JOptionPane.showMessageDialog(null, "Este campo No puede estar vacio");
+                JOptionPane.showMessageDialog(null, "Este campo Nombre No puede estar vacio");
             }
             
             
@@ -387,7 +452,7 @@ public class Main extends javax.swing.JFrame {
                 numeros.get(j).setText("");    
             }
             pnlIngresar.updateUI();
-            Rellenar_tabla(nombre, "1", correo, direccion, alias, lugar);
+            Rellenar_tabla(nombre , correo, direccion, alias, lugar, numero[0]);
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -494,12 +559,44 @@ public class Main extends javax.swing.JFrame {
 
     private void BuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscadorActionPerformed
         // TODO add your handling code here:
+        pnlIngresar.setVisible(false);
+        pnlTabla.setVisible(false);
         pnlBuscar.setVisible(true);
     }//GEN-LAST:event_BuscadorActionPerformed
 
     private void miVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miVerActionPerformed
         // TODO add your handling code here:
+        pnlTabla.setVisible(true);
+        pnlIngresar.setVisible(false);
+        pnlBuscar.setVisible(false);
     }//GEN-LAST:event_miVerActionPerformed
+
+    private void buscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscaActionPerformed
+
+    private void BotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarActionPerformed
+        // TODO add your handling code here:
+        String NombreBusca = busca.getText();
+        String[] Result = manejo.BusquedaNombre(NombreBusca);
+        
+        if(Result == null){
+            JOptionPane.showMessageDialog(null, "No se encontro este nombre en el Registro");
+        }else{
+            DefaultTableModel modelo = (DefaultTableModel)tablabusqueda.getModel();
+            //Esto es obligatorio
+            if(modelo.getRowCount()>0){
+                 for (int i = modelo.getRowCount() -1; i >= 0; i--){
+                      modelo.removeRow(i);
+                    } 
+             }
+                  String[] fila = {Result[0], Result[1], Result[2], Result[3], Result[4], Result[5]}; //las comas separan las filas
+                  modelo.addRow(fila);
+            }
+        
+        pnlBuscar.updateUI();
+        
+    }//GEN-LAST:event_BotonBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -538,19 +635,24 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonBuscar;
     private javax.swing.JMenuItem Buscador;
     private javax.swing.JLabel Lugar;
     private javax.swing.JTextField LugarTxt;
     private javax.swing.JTable Tabla;
     private javax.swing.JButton btnEnviar;
+    private javax.swing.JTextField busca;
     private javax.swing.JSpinner contNumeros;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lblCorreo;
     private javax.swing.JLabel lblIngresar;
     private javax.swing.JLabel lblNumero;
@@ -562,6 +664,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel pnlBuscar;
     private javax.swing.JPanel pnlIngresar;
     private javax.swing.JPanel pnlTabla;
+    private javax.swing.JTable tablabusqueda;
     private javax.swing.JTable tblAgenda;
     private javax.swing.JTextField txtAlias;
     private javax.swing.JTextField txtCorreo;

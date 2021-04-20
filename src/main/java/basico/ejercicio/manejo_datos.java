@@ -46,10 +46,17 @@ public class manejo_datos {
         archivos.EscribeFichero("txt\\registro.txt", datos, num);  
     }
     
+   
+    
     public String[] devolverString(){
         String[] datos = archivos.puntoComa();
         
         return datos;
+    }
+
+ public String[] BusquedaNombre(String Nombre){
+        String[] encontrados = archivos.busqueda(Nombre);
+        return encontrados;
     }
     
 }

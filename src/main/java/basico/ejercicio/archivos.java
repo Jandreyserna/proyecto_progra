@@ -94,14 +94,38 @@ public static boolean comparar_numeros(String dato){
         return encontrado == 1;
     }
 
+public static String[] busqueda(String nombre){
+    int encontrado = 0;
+    String[] divididoPuntos = texto.split(";");
+    for(int x = 0; x < divididoPuntos.length; x = x + 1){
+        String divididoComas;
+        divididoComas = divididoPuntos[x];
+        String[] dividido = divididoComas.split(",");
+        String[] datos = new String[dividido.length];
+        
+        for (int z = 0; z < dividido.length; z = z + 1){
+            if(nombre.equals(dividido[z])){
+                encontrado = 1;
+                datos[0] = nombre;
+            }else if (encontrado == 1){
+                datos[z] = dividido[z];
+            }
+            
+            if(encontrado == 1 && z + 1 == dividido.length){
+                return datos;
+            }
+        }
+    }
+        return null;
+    
+}
 public static String[] puntoComa(){
     String[] divididoPuntos = texto.split(";");
     
     return divididoPuntos; 
     
     
-}
-    
+}  
 }
   
 
