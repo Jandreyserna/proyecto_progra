@@ -31,6 +31,31 @@ public class archivos {
         }
         return encontrado;
     }
+
+    static void hacer_cambio(String[] datos, String[] Ndatos) throws IOException {
+        File f;
+        FileWriter fichero = null;
+        BufferedWriter bw;
+        PrintWriter pw = null;
+        
+        f = new File("txt\\registro.txt");
+        fichero = new FileWriter(f,true);
+        bw = new BufferedWriter(fichero);
+        pw = new PrintWriter(bw);
+        
+       String[] divididoPuntos = texto.split(";");
+        for(int x = 0; x < divididoPuntos.length; x = x + 1){
+            String divididoComas;
+            divididoComas = divididoPuntos[x];
+            String[] dividido = divididoComas.split(","); 
+        
+            for (int z = 0; z < dividido.length; z = z + 1){
+                if(datos[0].equals(dividido[z])){
+                  
+                }
+            }
+        }
+    }
     
     public String LeerTxt(String direction) throws IOException{// direccion del archivo
         

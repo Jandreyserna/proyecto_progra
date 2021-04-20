@@ -63,5 +63,12 @@ public class manejo_datos {
          boolean repetido = archivos.Busquedarepetido(nombre);
      return repetido;
     }
-    
+
+   public void cambiar(String[] datos, String[] Ndatos) throws IOException {
+         archivos.hacer_cambio(datos,Ndatos);
+                  
+         
+    }
 }
+
+    

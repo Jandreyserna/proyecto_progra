@@ -298,6 +298,11 @@ public class Main extends javax.swing.JFrame {
         jScrollPane4.setViewportView(tablabusqueda);
 
         jButton1.setText("Actualizar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlBuscarLayout = new javax.swing.GroupLayout(pnlBuscar);
         pnlBuscar.setLayout(pnlBuscarLayout);
@@ -607,6 +612,27 @@ public class Main extends javax.swing.JFrame {
         
     }//GEN-LAST:event_BotonBuscarActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+       
+        String[] datos = new String[6];
+        String[] Ndatos = new String[6];
+        DefaultTableModel modelo = (DefaultTableModel)tablabusqueda.getModel();
+        
+       // String dato[]=String.valueOf(modelo.getValueAt(tabla1.getSelectedRow(),0));
+        datos[0] = modelo.getValueAt(0, 0).toString();
+        datos[1] = modelo.getValueAt(0, 1).toString();
+        datos[2] = modelo.getValueAt(0, 2).toString();
+        datos[3] = modelo.getValueAt(0, 3).toString();
+        datos[4] = modelo.getValueAt(0, 4).toString();
+        datos[5] = modelo.getValueAt(0, 5).toString();
+        if(datos[0].length() != 0 && Ndatos[0].length() != 0){
+            JOptionPane.showMessageDialog(null, "aun no tenemos esta funcion");
+        }else{
+            JOptionPane.showMessageDialog(null, "Parametros insuficientes");
+        }           
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -680,4 +706,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
+
+    private String toString(Object valueAt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
