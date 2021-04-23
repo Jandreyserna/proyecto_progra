@@ -5,6 +5,7 @@
  */
 package basico.ejercicio;
 
+import static basico.ejercicio.Main.direccion;
 import java.io.*;
 import javax.swing.JOptionPane;
 
@@ -14,7 +15,106 @@ import javax.swing.JOptionPane;
  */
 public class archivos {
     public static String texto = "";
-    
+
+    static boolean Busquedarepetido(String nombre) {
+        boolean encontrado = false;
+        String[] divididoPuntos = texto.split(";");
+        for(int x = 0; x < divididoPuntos.length; x = x + 1){
+            String divididoComas;
+            divididoComas = divididoPuntos[x];
+            String[] dividido = divididoComas.split(","); 
+        
+            for (int z = 0; z < dividido.length; z = z + 1){
+                if(nombre.equals(dividido[z])){
+                  encontrado = true;
+                }
+            }
+        }
+        return encontrado;
+    }
+
+    static void hacer_cambio(String[] datos, String[] Ndatos) throws IOException {
+        File f;
+        FileWriter fichero = null;
+        BufferedWriter bw;
+        PrintWriter pw = null;
+        
+        f = new File("txt\\registro.txt");
+        fichero = new FileWriter(f,true);
+        bw = new BufferedWriter(fichero);
+        pw = new PrintWriter(bw);
+        
+       String[] divididoPuntos = texto.split(";");
+        for(int x = 0; x < divididoPuntos.length; x = x + 1){
+            String divididoComas;
+            divididoComas = divididoPuntos[x];
+            String[] dividido = divididoComas.split(","); 
+        
+            for (int z = 0; z < dividido.length; z = z + 1){
+                if(datos[0].equals(dividido[z])){
+                  
+                }
+            }
+        }
+    }
+
+    static void EscribeFichero2(String txtregistrotxt, String[] datos, String[] num, String datoscomparar) throws IOException {
+        File f;
+        FileWriter fichero = null;
+        BufferedWriter bw;
+        PrintWriter pw = null;
+        JOptionPane.showMessageDialog(null, "si entre a fichero");
+        
+        try
+        {
+            f = new File("txt\\registro.txt");
+            fichero = new FileWriter(f,false);
+            bw = new BufferedWriter(fichero);
+            pw = new PrintWriter(bw);
+            String[] divididoPuntos = texto.split(";");
+            for(int x = 0; x < divididoPuntos.length; x = x + 1){
+                String divididoComas;
+                divididoComas = divididoPuntos[x];
+                String[] dividido = divididoComas.split(","); 
+                int entro = 0;
+                int contadorNum = 0;
+                for (int z = 0; z < dividido.length; z = z + 1){
+                    if(datoscomparar.equals(dividido[z])){
+                        entro = 1;
+                        pw.write(datos[0]);
+                        pw.append(",");
+                    }else if(entro == 1 && z < 5){
+                        pw.write(datos[z]);
+                        pw.append(",");
+                    }else if (entro == 1 && z + 1 >= dividido.length){
+                        for(int w = contadorNum; w < num.length; w++){
+                            if(w + 1 == num.length ){
+                                pw.write(num[w]);
+                                pw.append(";");
+                                contadorNum++;
+                            }else{
+                                pw.write(num[w]);
+                                pw.append(",");
+                                contadorNum++;
+                            }
+                        }
+                    }else if(z + 1 == dividido.length){
+                            pw.write(dividido[z]);
+                            pw.append(";");
+                    }else{
+                        pw.write(dividido[z]);
+                        pw.append(",");
+                    }
+                }
+            }
+           
+            pw.close();
+            bw.close();
+   
+            } catch(FileNotFoundException e){ // si no encuentra el archivo muestra el error
+            System.err.println("No se encontro el archivo");    
+        }
+    }
     
     public String LeerTxt(String direction) throws IOException{// direccion del archivo
         
@@ -37,14 +137,11 @@ public class archivos {
     }
  
      
-    public static void EscribeFichero (String direction,String[] datos){
+    public static void EscribeFichero (String direction,String[] datos, String[] numero) throws IOException{
         File f;
         FileWriter fichero = null;
         BufferedWriter bw;
         PrintWriter pw = null;
-        for(int w = 0; w < 5; w = w +1){
-            System.out.println(datos[w]);
-        }
         
         try
         {
@@ -53,56 +150,85 @@ public class archivos {
             bw = new BufferedWriter(fichero);
             pw = new PrintWriter(bw);
             
-            for(int i = 0; i < 5; i = i + 1){
-                
-                boolean resultado;
-                
-                if (i == 1){
-                   resultado = comparar_numeros(datos[i]);
-                   if(resultado == true){
+            for(int i = 0; i < 5; i++){  
+                pw.write(datos[i]);
+                pw.append(",");
+            }
+            boolean resultado;       
+            for (int j = 0; j < numero.length; j++) {
+                resultado = comparar_numeros(numero[j]);
+                if(resultado == true){
+                       j = numero.length;
+                       pw.append(";");
                        JOptionPane.showMessageDialog(null, "El numero ya existe en este registro");
+                   } else if(j + 1 == numero.length ){
+                       pw.write(numero[j]);
+                       pw.append(";");
                    }else{
-                       pw.write(datos[i]);
+                       pw.write(numero[j]);
                        pw.append(",");
                    }
-                }else if(i == 4){
-                    pw.write(datos[i]);
-                    pw.append(";");
-                }else{
-                    pw.write(datos[i]);
-                    pw.append(",");
-                }
-                
             }
-
-            
-            pw.close();
+             pw.close();
             bw.close();
-            
-            
-            
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null,"Ha sucedido un error" + e);
-        } 
+   
+            } catch(FileNotFoundException e){ // si no encuentra el archivo muestra el error
+            System.err.println("No se encontro el archivo");    
+        }    
     }
+    
 public static boolean comparar_numeros(String dato){
     int encontrado = 0;
-    String[] dividido_puntos = texto.split(";");
-    
-    for(int x = 0; x < dividido_puntos.length; x = x + 1){
-        String dividido_comas;
-        dividido_comas = dividido_puntos[x];
-        String[] dividido = dividido_comas.split(","); 
+    String[] divididoPuntos = texto.split(";");
+    for(int x = 0; x < divididoPuntos.length; x = x + 1){
+        String divididoComas;
+        divididoComas = divididoPuntos[x];
+        String[] dividido = divididoComas.split(","); 
         
         for (int z = 0; z < dividido.length; z = z + 1){
-            if(dividido[z] == dato){
+            if(dato.equals(dividido[z])){
                 encontrado = 1;
             }
         }
     }
         return encontrado == 1;
     }
+
+public static String[] busqueda(String nombre){
+    int encontrado = 0;
+    String[] divididoPuntos = texto.split(";");
+    for(int x = 0; x < divididoPuntos.length; x = x + 1){
+        String divididoComas;
+        divididoComas = divididoPuntos[x];
+        String[] dividido = divididoComas.split(",");
+        String[] datos = new String[dividido.length];
+        
+        for (int z = 0; z < dividido.length; z = z + 1){
+            if(nombre.equals(dividido[z])){
+                encontrado = 1;
+                datos[0] = nombre;
+            }else if (encontrado == 1){
+                datos[z] = dividido[z];
+            }
+            
+            if(encontrado == 1 && z + 1 == dividido.length){
+                return datos;
+            }
+        }
+    }
+        return null;
     
+}
+
+
+
+public static String[] puntoComa(){
+    String[] divididoPuntos = texto.split(";");
+    
+    return divididoPuntos; 
+    
+    
+}  
 }
   
 
