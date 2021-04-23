@@ -102,6 +102,7 @@ public class Main extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         NcorreoTxt = new javax.swing.JTextField();
         NlugarTxt = new javax.swing.JTextField();
+        btnEliminar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         miAgenda = new javax.swing.JMenu();
         miIngresar = new javax.swing.JMenuItem();
@@ -338,6 +339,13 @@ public class Main extends javax.swing.JFrame {
 
         jLabel10.setText("Luagr donde lo conocio");
 
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlBuscarLayout = new javax.swing.GroupLayout(pnlBuscar);
         pnlBuscar.setLayout(pnlBuscarLayout);
         pnlBuscarLayout.setHorizontalGroup(
@@ -345,19 +353,6 @@ public class Main extends javax.swing.JFrame {
             .addGroup(pnlBuscarLayout.createSequentialGroup()
                 .addGroup(pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)
-                    .addGroup(pnlBuscarLayout.createSequentialGroup()
-                        .addGroup(pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlBuscarLayout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addGroup(pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(busca, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(BotonBuscar))
-                            .addGroup(pnlBuscarLayout.createSequentialGroup()
-                                .addGap(256, 256, 256)
-                                .addComponent(actualizar)))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(pnlBuscarLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addGroup(pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -387,7 +382,22 @@ public class Main extends javax.swing.JFrame {
                                                 .addComponent(NcorreoTxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
                                                 .addComponent(NdireccionTxt, javax.swing.GroupLayout.Alignment.LEADING))
                                             .addComponent(NlugarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 0, Short.MAX_VALUE)))))))
+                                        .addGap(0, 0, Short.MAX_VALUE))))))
+                    .addGroup(pnlBuscarLayout.createSequentialGroup()
+                        .addGroup(pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlBuscarLayout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addGroup(pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(busca, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(BotonBuscar))
+                            .addGroup(pnlBuscarLayout.createSequentialGroup()
+                                .addGap(256, 256, 256)
+                                .addComponent(actualizar)
+                                .addGap(89, 89, 89)
+                                .addComponent(btnEliminar)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(pnlBuscarLayout.createSequentialGroup()
                 .addContainerGap()
@@ -406,7 +416,9 @@ public class Main extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(actualizar)
+                .addGroup(pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(actualizar)
+                    .addComponent(btnEliminar))
                 .addGap(18, 18, 18)
                 .addGroup(pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -811,6 +823,27 @@ public class Main extends javax.swing.JFrame {
                                             
     }//GEN-LAST:event_Spinner2StateChanged
 
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        String dato = "";
+        DefaultTableModel modelo = (DefaultTableModel)tablabusqueda.getModel();
+        dato = modelo.getValueAt(0, 0).toString();
+        if(dato.length() != 0){  
+            try {
+                manejo.borrarDato( dato );
+            } catch (IOException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            pnlBuscar.updateUI();
+            pnlTabla.updateUI();
+            manejo_datos.abrirTxt();
+            pnlBuscar.updateUI();
+        }else{
+            JOptionPane.showMessageDialog(null, "Parametros insuficientes");
+        }
+        
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -857,6 +890,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JSpinner Spinner2;
     private javax.swing.JTable Tabla;
     private javax.swing.JButton actualizar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnEnviar;
     private javax.swing.JTextField busca;
     private javax.swing.JSpinner contNumeros;

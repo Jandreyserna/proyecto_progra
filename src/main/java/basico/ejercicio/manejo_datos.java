@@ -83,8 +83,11 @@ public class manejo_datos {
         datos[2] = direccion;
         datos[3] = alias;
         datos[4] = lugar;
-        JOptionPane.showMessageDialog(null, "si llamo la funcion");
         archivos.EscribeFichero2("txt\\registro1.txt", datos, num, Nombreevaluar);
+    }
+
+    void borrarDato(String dato) throws IOException {
+        archivos.Borrar(dato);
     }
 }
 

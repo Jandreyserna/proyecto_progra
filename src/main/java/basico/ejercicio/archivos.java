@@ -63,7 +63,6 @@ public class archivos {
         FileWriter fichero = null;
         BufferedWriter bw;
         PrintWriter pw = null;
-        JOptionPane.showMessageDialog(null, "si entre a fichero");
         
         try
         {
@@ -98,6 +97,49 @@ public class archivos {
                                 contadorNum++;
                             }
                         }
+                    }else if(z + 1 == dividido.length){
+                            pw.write(dividido[z]);
+                            pw.append(";");
+                    }else{
+                        pw.write(dividido[z]);
+                        pw.append(",");
+                    }
+                }
+            }
+           
+            pw.close();
+            bw.close();
+   
+            } catch(FileNotFoundException e){ // si no encuentra el archivo muestra el error
+            System.err.println("No se encontro el archivo");    
+        }
+    }
+
+    static void Borrar(String dato) throws IOException {
+        File f;
+        FileWriter fichero = null;
+        BufferedWriter bw;
+        PrintWriter pw = null;
+        
+        try
+        {
+            f = new File("txt\\registro.txt");
+            fichero = new FileWriter(f,false);
+            bw = new BufferedWriter(fichero);
+            pw = new PrintWriter(bw);
+            String[] divididoPuntos = texto.split(";");
+            for(int x = 0; x < divididoPuntos.length; x = x + 1){
+                String divididoComas;
+                divididoComas = divididoPuntos[x];
+                String[] dividido = divididoComas.split(","); 
+                int entro = 0;
+                int contadorNum = 0;
+                for (int z = 0; z < dividido.length; z = z + 1){
+                    if(dato.equals(dividido[z])){
+                        entro = 1;
+              
+                    }else if(entro == 1 ){
+                            entro = 1;
                     }else if(z + 1 == dividido.length){
                             pw.write(dividido[z]);
                             pw.append(";");
