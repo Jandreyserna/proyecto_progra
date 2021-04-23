@@ -33,12 +33,6 @@ public class Main extends javax.swing.JFrame {
         
         
         DefaultTableModel modelo = (DefaultTableModel)Tabla.getModel();
-        //Esto es obligatorio
-        if(modelo.getRowCount()>0){
-            for (int i = modelo.getRowCount() -1; i >= 0; i--){
-                modelo.removeRow(i);
-            } 
-        }
             String[] fila = {a, b, c, d, e, f}; //las comas separan las filas
             modelo.addRow(fila); //Instrucción de llenado de fila
         }
@@ -51,7 +45,7 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         numeros = new ArrayList <>();
         posicion = 0;
-        setSize(600, 900);
+        setSize(800, 900);
         setLocationRelativeTo(null);
     }
 
@@ -174,27 +168,24 @@ public class Main extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addComponent(lblCorreo)
                                 .addGap(18, 18, 18)))
-                        .addGroup(pnlIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LugarTxt)
+                        .addGroup(pnlIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(pnlIngresarLayout.createSequentialGroup()
-                                .addGroup(pnlIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnlIngresarLayout.createSequentialGroup()
-                                        .addGap(138, 138, 138)
-                                        .addComponent(btnEnviar))
-                                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(pnlIngresarLayout.createSequentialGroup()
-                                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(30, 30, 30)
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtAlias, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 942, Short.MAX_VALUE))))
+                                .addGap(138, 138, 138)
+                                .addComponent(btnEnviar))
+                            .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlIngresarLayout.createSequentialGroup()
+                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtAlias, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
+                            .addComponent(LugarTxt)))
                     .addGroup(pnlIngresarLayout.createSequentialGroup()
                         .addGap(212, 212, 212)
                         .addComponent(jLabel1)))
-                .addContainerGap(952, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlIngresarLayout.setVerticalGroup(
             pnlIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -391,7 +382,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(1811, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -521,12 +512,12 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
          DefaultTableModel modelo = (DefaultTableModel)Tabla.getModel();
         //Esto es obligatorio
-        if(modelo.getRowCount()>0){
-            int a = 0;
-            for (int i = modelo.getRowCount() -1; i >= 0; i--){
-                modelo.removeRow(i);        
-            } 
-        }
+        //if(modelo.getRowCount()>0){
+          //  int a = 0;
+            //for (int i = modelo.getRowCount() -1; i >= 0; i--){
+              //  modelo.removeRow(i);        
+            //} 
+        //}
         
         String a = "";
         String b = "";
