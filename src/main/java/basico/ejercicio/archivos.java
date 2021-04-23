@@ -5,6 +5,7 @@
  */
 package basico.ejercicio;
 
+import static basico.ejercicio.Main.direccion;
 import java.io.*;
 import javax.swing.JOptionPane;
 
@@ -54,6 +55,64 @@ public class archivos {
                   
                 }
             }
+        }
+    }
+
+    static void EscribeFichero2(String txtregistrotxt, String[] datos, String[] num, String datoscomparar) throws IOException {
+        File f;
+        FileWriter fichero = null;
+        BufferedWriter bw;
+        PrintWriter pw = null;
+        JOptionPane.showMessageDialog(null, "si entre a fichero");
+        
+        try
+        {
+            f = new File("txt\\registro.txt");
+            fichero = new FileWriter(f,false);
+            bw = new BufferedWriter(fichero);
+            pw = new PrintWriter(bw);
+            String[] divididoPuntos = texto.split(";");
+            for(int x = 0; x < divididoPuntos.length; x = x + 1){
+                String divididoComas;
+                divididoComas = divididoPuntos[x];
+                String[] dividido = divididoComas.split(","); 
+                int entro = 0;
+                int contadorNum = 0;
+                for (int z = 0; z < dividido.length; z = z + 1){
+                    if(datoscomparar.equals(dividido[z])){
+                        entro = 1;
+                        pw.write(datos[0]);
+                        pw.append(",");
+                    }else if(entro == 1 && z < 5){
+                        pw.write(datos[z]);
+                        pw.append(",");
+                    }else if (entro == 1 && z + 1 >= dividido.length){
+                        for(int w = contadorNum; w < num.length; w++){
+                            if(w + 1 == num.length ){
+                                pw.write(num[w]);
+                                pw.append(";");
+                                contadorNum++;
+                            }else{
+                                pw.write(num[w]);
+                                pw.append(",");
+                                contadorNum++;
+                            }
+                        }
+                    }else if(z + 1 == dividido.length){
+                            pw.write(dividido[z]);
+                            pw.append(";");
+                    }else{
+                        pw.write(dividido[z]);
+                        pw.append(",");
+                    }
+                }
+            }
+           
+            pw.close();
+            bw.close();
+   
+            } catch(FileNotFoundException e){ // si no encuentra el archivo muestra el error
+            System.err.println("No se encontro el archivo");    
         }
     }
     

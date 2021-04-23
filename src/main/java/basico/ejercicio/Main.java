@@ -20,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
 public class Main extends javax.swing.JFrame {
     
     private final List<JTextField> numeros;
+    private final List<JTextField> numeros2;
     private int posicion; 
 
     public static String nombre;
@@ -44,6 +45,7 @@ public class Main extends javax.swing.JFrame {
         manejo_datos.abrirTxt();
         initComponents();
         numeros = new ArrayList <>();
+        numeros2 = new ArrayList <>();
         posicion = 0;
         setSize(800, 900);
         setLocationRelativeTo(null);
@@ -86,12 +88,20 @@ public class Main extends javax.swing.JFrame {
         BotonBuscar = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         tablabusqueda = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        actualizar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        NnombreTxt = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        NaliasTxt = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        Spinner2 = new javax.swing.JSpinner();
+        pNumeros2 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        NdireccionTxt = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        NcorreoTxt = new javax.swing.JTextField();
+        NlugarTxt = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         miAgenda = new javax.swing.JMenu();
         miIngresar = new javax.swing.JMenuItem();
@@ -295,12 +305,38 @@ public class Main extends javax.swing.JFrame {
         ));
         jScrollPane4.setViewportView(tablabusqueda);
 
-        jButton1.setText("Actualizar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        actualizar.setText("Actualizar");
+        actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                actualizarActionPerformed(evt);
             }
         });
+
+        jLabel5.setText("Nuevo Nombre");
+
+        NnombreTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NnombreTxtActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Nuevo Alias");
+
+        jLabel7.setText("Nuevo numero (S)");
+
+        Spinner2.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                Spinner2StateChanged(evt);
+            }
+        });
+
+        pNumeros2.setLayout(new javax.swing.BoxLayout(pNumeros2, javax.swing.BoxLayout.LINE_AXIS));
+
+        jLabel8.setText("Nueva Direccion");
+
+        jLabel9.setText("Nuevo Correo");
+
+        jLabel10.setText("Luagr donde lo conocio");
 
         javax.swing.GroupLayout pnlBuscarLayout = new javax.swing.GroupLayout(pnlBuscar);
         pnlBuscar.setLayout(pnlBuscarLayout);
@@ -308,7 +344,7 @@ public class Main extends javax.swing.JFrame {
             pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlBuscarLayout.createSequentialGroup()
                 .addGroup(pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)
                     .addGroup(pnlBuscarLayout.createSequentialGroup()
                         .addGroup(pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlBuscarLayout.createSequentialGroup()
@@ -320,9 +356,43 @@ public class Main extends javax.swing.JFrame {
                                 .addComponent(BotonBuscar))
                             .addGroup(pnlBuscarLayout.createSequentialGroup()
                                 .addGap(256, 256, 256)
-                                .addComponent(jButton1)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(actualizar)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(pnlBuscarLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlBuscarLayout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(18, 18, 18)
+                                .addComponent(NnombreTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(35, 35, 35)
+                                .addComponent(jLabel6)
+                                .addGap(18, 18, 18)
+                                .addComponent(NaliasTxt))
+                            .addGroup(pnlBuscarLayout.createSequentialGroup()
+                                .addGroup(pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel9))
+                                .addGap(29, 29, 29)
+                                .addGroup(pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnlBuscarLayout.createSequentialGroup()
+                                        .addComponent(Spinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(36, 36, 36)
+                                        .addComponent(pNumeros2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(22, 22, 22))
+                                    .addGroup(pnlBuscarLayout.createSequentialGroup()
+                                        .addGroup(pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(NcorreoTxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                                                .addComponent(NdireccionTxt, javax.swing.GroupLayout.Alignment.LEADING))
+                                            .addComponent(NlugarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE)))))))
                 .addContainerGap())
+            .addGroup(pnlBuscarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel10)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlBuscarLayout.setVerticalGroup(
             pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -336,45 +406,32 @@ public class Main extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(jButton1)
-                .addContainerGap(29, Short.MAX_VALUE))
-        );
-
-        jLabel5.setText("Nuevo Nombre");
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setText("Nuevo Alias");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5)
-                .addGap(33, 33, 33)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(actualizar)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel6)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField2)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NnombreTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(177, Short.MAX_VALUE))
+                    .addComponent(NaliasTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel7)
+                        .addComponent(Spinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pNumeros2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(NdireccionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(NcorreoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10)
+                    .addComponent(NlugarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         miAgenda.setText("Agenda");
@@ -425,10 +482,8 @@ public class Main extends javax.swing.JFrame {
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pnlBuscar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(1811, Short.MAX_VALUE))
+                    .addComponent(pnlBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(1766, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -437,11 +492,9 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(pnlIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addContainerGap(252, Short.MAX_VALUE))
         );
 
         pack();
@@ -560,13 +613,6 @@ public class Main extends javax.swing.JFrame {
     private void TablaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_TablaPropertyChange
         // TODO add your handling code here:
          DefaultTableModel modelo = (DefaultTableModel)Tabla.getModel();
-        //Esto es obligatorio
-        //if(modelo.getRowCount()>0){
-          //  int a = 0;
-            //for (int i = modelo.getRowCount() -1; i >= 0; i--){
-              //  modelo.removeRow(i);        
-            //} 
-        //}
         
         String a = "";
         String b = "";
@@ -652,7 +698,7 @@ public class Main extends javax.swing.JFrame {
         
     }//GEN-LAST:event_BotonBuscarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
         // TODO add your handling code here:
        
         String[] datos = new String[6];
@@ -666,16 +712,104 @@ public class Main extends javax.swing.JFrame {
         datos[3] = modelo.getValueAt(0, 3).toString();
         datos[4] = modelo.getValueAt(0, 4).toString();
         datos[5] = modelo.getValueAt(0, 5).toString();
-        if(datos[0].length() != 0 && Ndatos[0].length() != 0){
-            JOptionPane.showMessageDialog(null, "aun no tenemos esta funcion");
+        String Nombreevaluar = datos[0];
+        if(datos[0].length() != 0){
+            String[] numero = new String[pNumeros2.getComponents().length] ;
+            for (int j = 0; j < pNumeros2.getComponents().length ; j++) {
+                numero[j] = numeros2.get(j).getText();
+                System.out.println(Arrays.toString(numero));
+            }
+            boolean repetido;
+            nombre = NnombreTxt.getText();
+            correo = NcorreoTxt.getText();
+            direccion = NdireccionTxt.getText();
+            alias = NaliasTxt.getText();
+            lugar = NlugarTxt.getText();
+            if( NnombreTxt.getText().length() !=  0){
+                if( NlugarTxt.getText().length() != 0){
+                    for (int x = 0; x < numero.length; x++) {
+                        if( numero[x].length() != 0){
+                            if(x+1 == numero.length){
+                                repetido =  manejo.repetido(nombre);
+                                if(repetido == false){
+                                    try {
+                                        
+                                        manejo.llenarTxt2( nombre,numero , correo, direccion,alias,lugar,Nombreevaluar );
+                                    } catch (IOException ex) {
+                                        Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                }else{
+                                    JOptionPane.showMessageDialog(null, "Este nombre ya existe en el registro");
+                                }
+                                
+                            }
+                        }else{
+                            JOptionPane.showMessageDialog(null, "Este campo numero No puede estar vacio");
+                        }
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Este campo Lugar No puede estar vacio");
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Este campo Nombre No puede estar vacio");
+            }
+            NnombreTxt.setText("");
+            NcorreoTxt.setText("");
+            NdireccionTxt.setText("");
+            NaliasTxt.setText("");
+            NlugarTxt.setText("");
+            for (int j = 0; j < pNumeros2.getComponents().length ; j++) {
+                numeros2.get(j).setText("");    
+            }
+            pnlBuscar.updateUI();
+            Rellenar_tabla(nombre , correo, direccion, alias, lugar, numero[0]);
+            manejo_datos.abrirTxt();
         }else{
             JOptionPane.showMessageDialog(null, "Parametros insuficientes");
-        }           
-    }//GEN-LAST:event_jButton1ActionPerformed
+        }              
+    }//GEN-LAST:event_actualizarActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void NnombreTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NnombreTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_NnombreTxtActionPerformed
+
+    private void Spinner2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_Spinner2StateChanged
+            // TODO add your handling code here:
+             int num = (Integer)Spinner2.getValue();
+            int contenido = pNumeros2.getComponents().length;
+            if (num > contenido){
+                for(int i = contenido; i < num ; i++){
+                    JTextField componente = new JTextField(posicion);           
+                    componente.addKeyListener(new KeyAdapter(){
+                      @Override
+                     public void keyTyped(KeyEvent e){
+                            if (e.getKeyChar() < '0' || e.getKeyChar() > '9'){
+                              JOptionPane.showMessageDialog(null, "Ingrese un valor númerico");
+                              e.consume();
+                            }
+                            //super.KeyTyped(e);
+                        }
+
+                    private Object getToolKit() {
+                        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    }
+                    
+                });               
+                pNumeros2.add(componente);
+                numeros2.add(componente);
+                posicion++;
+            }
+                pNumeros2.updateUI();
+            }   else if (num < contenido){
+                for(int x = contenido; x > num ; x--){
+                    pNumeros2.remove(x - 1);
+                    numeros2.remove(x -1);
+                    posicion--;
+                }
+                pNumeros2.updateUI();
+            }
+                                            
+    }//GEN-LAST:event_Spinner2StateChanged
 
     /**
      * @param args the command line arguments
@@ -693,15 +827,12 @@ public class Main extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        
         //</editor-fold>
         //</editor-fold>
 
@@ -718,25 +849,32 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem Buscador;
     private javax.swing.JLabel Lugar;
     private javax.swing.JTextField LugarTxt;
+    private javax.swing.JTextField NaliasTxt;
+    private javax.swing.JTextField NcorreoTxt;
+    private javax.swing.JTextField NdireccionTxt;
+    private javax.swing.JTextField NlugarTxt;
+    private javax.swing.JTextField NnombreTxt;
+    private javax.swing.JSpinner Spinner2;
     private javax.swing.JTable Tabla;
+    private javax.swing.JButton actualizar;
     private javax.swing.JButton btnEnviar;
     private javax.swing.JTextField busca;
     private javax.swing.JSpinner contNumeros;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lblCorreo;
     private javax.swing.JLabel lblIngresar;
     private javax.swing.JLabel lblNumero;
@@ -745,6 +883,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem miIngresar;
     private javax.swing.JMenuItem miVer;
     private javax.swing.JPanel pNumeros;
+    private javax.swing.JPanel pNumeros2;
     private javax.swing.JPanel pnlBuscar;
     private javax.swing.JPanel pnlIngresar;
     private javax.swing.JPanel pnlTabla;

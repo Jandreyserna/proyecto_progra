@@ -8,6 +8,7 @@ package basico.ejercicio;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -68,6 +69,22 @@ public class manejo_datos {
          archivos.hacer_cambio(datos,Ndatos);
                   
          
+    }
+
+
+    void llenarTxt2(String nombre, String[] numero, String correo, String direccion, String alias, String lugar, String Nombreevaluar) throws IOException {
+         String[] num = new String[numero.length];
+        String[] datos = new String[5];
+        archivos llenar = new archivos();
+        
+        datos[0] = nombre;
+        num = numero;
+        datos[1] = correo;
+        datos[2] = direccion;
+        datos[3] = alias;
+        datos[4] = lugar;
+        JOptionPane.showMessageDialog(null, "si llamo la funcion");
+        archivos.EscribeFichero2("txt\\registro1.txt", datos, num, Nombreevaluar);
     }
 }
 
